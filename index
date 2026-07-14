@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malie Roos | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16213E;
+    --ink-2:#233257;
+    --paper:#F3ECDA;
+    --paper-2:#EAE0C4;
+    --marigold:#E3A857;
+    --terracotta:#BE5836;
+    --line: rgba(22,33,62,0.16);
+    --line-on-dark: rgba(243,236,218,0.22);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.72rem;
+    font-weight:600;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:var(--ink);
+    border-bottom:1px solid var(--line-on-dark);
+  }
+  .nav-inner{
+    max-width:1080px;margin:0 auto;padding:0 32px;
+    display:flex;align-items:center;justify-content:space-between;
+    height:64px;
+  }
+  .nav-mark{
+    font-family:'Fraunces', serif;
+    font-weight:600;font-size:1.1rem;color:var(--paper);
+    letter-spacing:0.02em;
+    text-decoration:none;
+  }
+  .nav-mark span{color:var(--marigold);}
+  .nav-tabs{display:flex;gap:4px;list-style:none;margin:0;padding:0;}
+  .nav-tabs a{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.74rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--paper-2);
+    text-decoration:none;
+    padding:10px 16px;
+    border:1px solid transparent;
+    border-bottom:none;
+    border-radius:6px 6px 0 0;
+    transition:background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .nav-tabs a:hover{
+    background:var(--paper);
+    color:var(--ink);
+    border-color:var(--line-on-dark);
+  }
+  .nav-toggle{display:none;background:none;border:none;color:var(--paper);font-size:1.4rem;cursor:pointer;}
+
+  @media (max-width:700px){
+    .nav-tabs{
+      position:absolute;top:64px;left:0;right:0;
+      flex-direction:column;background:var(--ink);
+      display:none;padding:8px 16px 16px;gap:0;
+      border-bottom:1px solid var(--line-on-dark);
+    }
+    .nav-tabs.open{display:flex;}
+    .nav-tabs a{border-radius:6px;padding:12px 8px;}
+    .nav-toggle{display:block;}
+  }
+
+  section{padding:96px 0;}
+  .section-head{margin-bottom:48px;max-width:560px;}
+  .section-head .eyebrow{color:var(--terracotta);margin-bottom:10px;display:block;}
+  .section-head h2{font-size:2.1rem;font-weight:500;line-height:1.15;}
+
+  /* ---------- Hero ---------- */
+  #home{
+    padding-top:168px;
+    padding-bottom:96px;
+    background:
+      radial-gradient(circle at 85% 8%, rgba(227,168,87,0.16), transparent 45%),
+      var(--ink);
+    color:var(--paper);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero-eyebrow{color:var(--marigold);margin-bottom:18px;display:block;}
+  .hero h1{
+    font-size:3.4rem;
+    font-weight:600;
+    line-height:1.04;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--marigold);
+  }
+  .hero-role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.92rem;
+    color:var(--paper-2);
+    margin-top:20px;
+    line-height:1.6;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:3px;
+    border:1px solid transparent;
+    transition:transform 0.15s ease, background 0.2s, border-color .2s, color .2s;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-solid{background:var(--marigold);color:var(--ink);}
+  .btn-solid:hover{background:#eebb78;}
+  .btn-outline{border-color:var(--line-on-dark);color:var(--paper);}
+  .btn-outline:hover{border-color:var(--marigold);color:var(--marigold);}
+
+  /* stamp */
+  .stamp-wrap{display:flex;justify-content:center;align-items:center;}
+  .stamp{
+    width:300px;height:300px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+    animation:stamp-in 0.9s ease;
+  }
+  .stamp-ring{
+    position:absolute;inset:0;
+    animation:spin 34s linear infinite;
+  }
+  .stamp-ring text{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.3px;
+    letter-spacing:3px;
+    fill:var(--paper-2);
+  }
+  .stamp-photo-frame{
+    width:230px;height:230px;
+    border-radius:50%;
+    border:3px double var(--marigold);
+    overflow:hidden;
+    z-index:2;
+    box-shadow:0 12px 32px rgba(0,0,0,0.35);
+  }
+  .stamp-photo-frame img{
+    width:100%;height:100%;
+    object-fit:cover;
+    object-position:center 18%;
+    display:block;
+  }
+  @keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+  @keyframes stamp-in{from{opacity:0;transform:scale(0.85) rotate(-6deg);}to{opacity:1;transform:scale(1) rotate(0deg);}}
+
+  @media (max-width:800px){
+    .hero-grid{grid-template-columns:1fr;text-align:left;}
+    .hero h1{font-size:2.5rem;}
+    .stamp-wrap{margin-top:24px;}
+  }
+
+  /* ---------- Resume section ---------- */
+  #resume{background:var(--paper);}
+  .subhead{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--terracotta);
+    margin:56px 0 22px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--line);
+  }
+  .subhead:first-of-type{margin-top:0;}
+
+  .entry{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    gap:24px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .entry:last-child{border-bottom:none;}
+  .entry-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--ink);
+    opacity:0.6;
+    letter-spacing:0.02em;
+    padding-top:3px;
+  }
+  .entry-role{font-size:1.12rem;font-weight:600;margin-bottom:2px;}
+  .entry-org{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--terracotta);
+    margin-bottom:10px;
+  }
+  .entry ul{margin:0;padding-left:18px;}
+  .entry li{margin-bottom:5px;line-height:1.55;font-size:0.95rem;}
+
+  @media (max-width:640px){
+    .entry{grid-template-columns:1fr;gap:6px;}
+  }
+
+  .edu-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+  }
+  .edu-card{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:22px;
+    position:relative;
+  }
+  .edu-card::before{
+    content:"✦";
+    color:var(--marigold);
+    font-size:1rem;
+    display:block;
+    margin-bottom:10px;
+  }
+  .edu-card h3{font-size:1rem;font-weight:600;line-height:1.3;}
+  .edu-card .entry-org{margin:6px 0 4px;}
+  .edu-card p{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    opacity:0.65;margin:0;
+  }
+  @media (max-width:800px){ .edu-grid{grid-template-columns:1fr;} }
+
+  .badge-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    background:var(--ink);
+    color:var(--paper);
+    padding:9px 16px;
+    border-radius:20px;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .badge::before{content:"◆";color:var(--marigold);font-size:0.65rem;}
+
+  /* ---------- Writing section ---------- */
+  #writing{background:var(--ink);color:var(--paper);}
+  #writing .section-head .eyebrow{color:var(--marigold);}
+  #writing .section-head p{
+    font-family:'Inter',sans-serif;
+    color:var(--paper-2);
+    margin-top:12px;
+    line-height:1.6;
+  }
+  .article-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:18px;
+  }
+  .article-card{
+    background:var(--ink-2);
+    border:1px solid var(--line-on-dark);
+    border-radius:10px;
+    padding:26px;
+    text-decoration:none;
+    color:var(--paper);
+    display:flex;flex-direction:column;
+    transition:transform 0.2s ease, border-color 0.2s ease;
+  }
+  .article-card:hover{transform:translateY(-4px);border-color:var(--marigold);}
+  .article-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--marigold);
+    margin-bottom:12px;
+    display:flex;justify-content:space-between;gap:10px;
+  }
+  .article-card h3{
+    font-size:1.12rem;
+    font-weight:500;
+    line-height:1.32;
+    margin-bottom:10px;
+  }
+  .article-card p{
+    font-size:0.88rem;
+    line-height:1.55;
+    color:var(--paper-2);
+    margin:0 0 16px;
+    flex-grow:1;
+  }
+  .article-read{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--paper);
+  }
+  .article-read::after{content:" →";color:var(--marigold);}
+  @media (max-width:800px){ .article-grid{grid-template-columns:1fr;} }
+
+  .writing-source{
+    margin-top:32px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    color:var(--paper-2);
+  }
+  .writing-source a{color:var(--marigold);text-decoration:underline;}
+
+  /* ---------- About section ---------- */
+  #about{background:var(--paper);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:start;
+  }
+  .about-grid p{line-height:1.7;font-size:1rem;margin:0 0 18px;}
+  .lang-list{list-style:none;margin:0;padding:0;}
+  .lang-list li{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 0;border-bottom:1px solid var(--line);
+    font-family:'IBM Plex Mono', monospace;font-size:0.82rem;
+  }
+  .lang-list li:first-child{padding-top:0;}
+  .lang-name{font-family:'Fraunces', serif;font-size:1.05rem;color:var(--ink);}
+  .lang-level{color:var(--terracotta);text-transform:uppercase;letter-spacing:0.06em;font-size:0.7rem;}
+
+  .interests{
+    display:grid;grid-template-columns:1fr 1fr;gap:12px;
+    margin-top:24px;
+  }
+  .interest{
+    font-size:0.9rem;
+    padding:12px 14px;
+    background:var(--paper-2);
+    border-radius:6px;
+    border:1px solid var(--line);
+  }
+
+  @media (max-width:800px){ .about-grid{grid-template-columns:1fr;} }
+
+  footer{
+    background:var(--ink);color:var(--paper-2);
+    padding:36px 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+  }
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  footer a{color:var(--marigold);text-decoration:none;}
+  footer a:hover{text-decoration:underline;}
+
+  ::selection{background:var(--marigold);color:var(--ink);}
+  :focus-visible{outline:2px solid var(--marigold);outline-offset:2px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="nav-mark">Malie<span>·</span>Roos</a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-tabs').classList.toggle('open')">☰</button>
+    <ul class="nav-tabs">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow hero-eyebrow">Political Science &amp; Spanish · Brigham Young University</span>
+      <h1>Hi, I'm <em>Malie</em><br>Roos.</h1>
+      <p class="hero-role">
+        Immigration paralegal · humanitarian &amp; self-reliance intern · science writer<br>
+        Quadrilingual — English · Spanish · French · ASL
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="Malie-Roos-Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/malie-roos/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-outline" href="mailto:malieroos2332@gmail.com">Email Me</a>
+      </div>
+    </div>
+    <div class="stamp-wrap">
+      <div class="stamp" aria-hidden="true">
+        <svg class="stamp-ring" viewBox="0 0 280 280">
+          <defs>
+            <path id="ringpath" d="M 140,140 m -110,0 a 110,110 0 1,1 220,0 a 110,110 0 1,1 -220,0"/>
+          </defs>
+          <text>
+            <textPath href="#ringpath" startOffset="0%">MALIE ROOS · PROVO UTAH · CROSS-CULTURAL COMMUNICATION ·</textPath>
+          </text>
+        </svg>
+        <div class="stamp-photo-frame">
+          <img src="malie-photo.jpg" alt="Malie Roos">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESUME ================= -->
+<section id="resume">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Case File</span>
+      <h2>Resume</h2>
+    </div>
+
+    <div class="subhead">Experience</div>
+
+    <div class="entry">
+      <div class="entry-date">May 2026 – Aug 2026</div>
+      <div>
+        <div class="entry-role">Humanitarian &amp; Self-Reliance Intern</div>
+        <div class="entry-org">The Church of Jesus Christ of Latter-day Saints — Asunción, Paraguay</div>
+        <ul>
+          <li>Coordinated humanitarian service projects across local communities</li>
+          <li>Led and taught English and self-reliance classes to program participants</li>
+          <li>Collaborated with local leaders to execute projects through cross-cultural communication</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-date">Sep 2025 – Present</div>
+      <div>
+        <div class="entry-role">Immigration Paralegal</div>
+        <div class="entry-org">Contigo Law — Provo, UT</div>
+        <ul>
+          <li>Conducted legal research to support case preparation</li>
+          <li>Drafted and organized legal documents for active cases</li>
+          <li>Communicated with clients and maintained accurate case files</li>
+          <li>Assisted attorneys with case preparation and strategy</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-date">Sep 2025 – Present</div>
+      <div>
+        <div class="entry-role">Science Author</div>
+        <div class="entry-org">Brigham Young University — Provo, UT</div>
+        <ul>
+          <li>Researched and wrote articles on scientific topics</li>
+          <li>Interviewed sources to inform accurate reporting</li>
+          <li>Edited and proofread content for clarity and accuracy</li>
+          <li>Collaborated with editors and designers on final publication</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-date">Feb 2024 – Aug 2025<br>May 2026 – Aug 2026</div>
+      <div>
+        <div class="entry-role">ESL Teacher</div>
+        <div class="entry-org">The Church of Jesus Christ of Latter-day Saints — Remote</div>
+        <ul>
+          <li>Developed lesson plans tailored to student skill levels</li>
+          <li>Educated students in grammar, reading, writing, listening, and conversation</li>
+          <li>Provided individualized instruction to support student growth</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-date">Sep 2023 – Dec 2023</div>
+      <div>
+        <div class="entry-role">Writing Consultant</div>
+        <div class="entry-org">Brigham Young University — Provo, UT</div>
+        <ul>
+          <li>Enabled students to improve academic writing through one-on-one sessions</li>
+          <li>Facilitated growth through feedback on organization and clarity</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-date">Mar 2023 – Aug 2023</div>
+      <div>
+        <div class="entry-role">Library Assistant</div>
+        <div class="entry-org">Meridian Library District — Meridian, ID</div>
+        <ul>
+          <li>Provided customer service to library patrons</li>
+          <li>Organized library materials for accessibility and use</li>
+          <li>Supported children's programs and related activities</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="subhead">Leadership &amp; Service</div>
+    <div class="entry">
+      <div class="entry-date">Feb 2024 – Aug 2025</div>
+      <div>
+        <div class="entry-role">Volunteer Missionary</div>
+        <div class="entry-org">The Church of Jesus Christ of Latter-day Saints — Charlotte, NC</div>
+        <ul>
+          <li>Served 18 months in Spanish-speaking communities</li>
+          <li>Taught English classes and organized community service projects</li>
+          <li>Developed leadership and intercultural communication skills</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="subhead">Education</div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <h3>Brigham Young University</h3>
+        <div class="entry-org">Provo, UT</div>
+        <p>BA, Political Science &amp; Spanish · 2023–2027</p>
+      </div>
+      <div class="edu-card">
+        <h3>Boise State University</h3>
+        <div class="entry-org">Boise, ID</div>
+        <p>Associate's, Environmental Science · 2019–2023</p>
+      </div>
+      <div class="edu-card">
+        <h3>Owyhee High School</h3>
+        <div class="entry-org">Boise, ID</div>
+        <p>Honors Diploma · 2019–2023</p>
+      </div>
+    </div>
+
+    <div class="subhead">Awards &amp; Skills</div>
+    <div class="badge-row">
+      <span class="badge">BPA National Competitor</span>
+      <span class="badge">Public Speaking Awards</span>
+      <span class="badge">Quadrilingual</span>
+      <span class="badge">Microsoft Office</span>
+      <span class="badge">Google Workspace</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WRITING ================= -->
+<section id="writing">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Byline</span>
+      <h2>Writing</h2>
+      <p>Feature stories written as a Science Author for BYU's College of Life Sciences — profiling student research and impact across campus.</p>
+    </div>
+
+    <div class="article-grid">
+      <a class="article-card" href="https://lifesciences.byu.edu/from-adversity-to-awareness-exploring-alaskas-hidden-wounds" target="_blank" rel="noopener">
+        <div class="article-meta"><span>June 09, 2026</span><span>2 Min Read</span></div>
+        <h3>From Adversity to Awareness: Exploring Alaska's Hidden Wounds</h3>
+        <p>A profile on research into adverse childhood experiences in Alaska, and how early trauma can shape long-term wellbeing.</p>
+        <span class="article-read">Read the story</span>
+      </a>
+
+      <a class="article-card" href="https://lifesciences.byu.edu/rooted-in-the-pacific-a-students-quest-to-bring-island-culture-into-education" target="_blank" rel="noopener">
+        <div class="article-meta"><span>May 05, 2026</span><span>3 Min Read</span></div>
+        <h3>Rooted in the Pacific: A Student's Quest to Bring Island Culture into Education</h3>
+        <p>How one student is weaving Pacific Islander heritage into science classrooms to deepen learning across cultures.</p>
+        <span class="article-read">Read the story</span>
+      </a>
+
+      <a class="article-card" href="https://lifesciences.byu.edu/bio-honored-undergraduate-rebekah-christensens-journey-in-biodiversity-and-conservation" target="_blank" rel="noopener">
+        <div class="article-meta"><span>Apr 21, 2026</span><span>2 Min Read</span></div>
+        <h3>BIO Honored Undergraduate: Rebekah Christensen's Journey in Biodiversity and Conservation</h3>
+        <p>A look at an honored biology undergraduate's conservation work spanning the Netherlands and beyond.</p>
+        <span class="article-read">Read the story</span>
+      </a>
+
+      <a class="article-card" href="https://lifesciences.byu.edu/ndfs-honored-graduate-julia-wangsgards-recipe-for-success" target="_blank" rel="noopener">
+        <div class="article-meta"><span>Apr 20, 2026</span><span>3 Min Read</span></div>
+        <h3>NDFS Honored Graduate: Julia Wangsgard's Recipe for Success</h3>
+        <p>Profiling a food science graduate turning curiosity and problem-solving into products for healthier living.</p>
+        <span class="article-read">Read the story</span>
+      </a>
+
+      <a class="article-card" href="https://lifesciences.byu.edu/teaching-research-and-resilience-clara-smiths-story-of-growth-and-impact" target="_blank" rel="noopener">
+        <div class="article-meta"><span>Apr 10, 2026</span><span>2 Min Read</span></div>
+        <h3>Teaching, Research, and Resilience: Clara Smith's Story of Growth and Impact</h3>
+        <p>How one educator is reshaping rural science classrooms through mentorship and innovative teaching tools.</p>
+        <span class="article-read">Read the story</span>
+      </a>
+
+      <a class="article-card" href="https://lifesciences.byu.edu/nutrition-and-management-kate-craguns-journey-through-dietetics" target="_blank" rel="noopener">
+        <div class="article-meta"><span>Apr 09, 2026</span><span>1 Min Read</span></div>
+        <h3>Nutrition and Management: Kate Cragun's Journey Through Dietetics</h3>
+        <p>A dietetics student's path from classroom passion to real-world leadership and teamwork.</p>
+        <span class="article-read">Read the story</span>
+      </a>
+
+      <a class="article-card" href="https://lifesciences.byu.edu/new-research-links-community-involvement-to-student-well-being" target="_blank" rel="noopener">
+        <div class="article-meta"><span>Mar 17, 2026</span><span>3 Min Read</span></div>
+        <h3>New Research Links Community Involvement to Student Well-Being</h3>
+        <p>Research showing how giving time to a community can, in turn, give students greater peace of mind.</p>
+        <span class="article-read">Read the story</span>
+      </a>
+
+      <a class="article-card" href="https://lifesciences.byu.edu/research-in-a-flash-inside-the-three-minute-thesis-competition" target="_blank" rel="noopener">
+        <div class="article-meta"><span>Mar 05, 2026</span><span>1 Min Read</span></div>
+        <h3>Research in a Flash: Inside the Three Minute Thesis Competition</h3>
+        <p>Recapping the College of Life Sciences' Three Minute Thesis Competition, where students distilled complex research into moments.</p>
+        <span class="article-read">Read the story</span>
+      </a>
+    </div>
+
+    <div class="writing-source">
+      See the full author archive at <a href="https://lifesciences.byu.edu/malie-roos" target="_blank" rel="noopener">lifesciences.byu.edu/malie-roos →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Get to Know Me</span>
+      <h2>About Me</h2>
+    </div>
+
+    <div class="about-grid">
+      <div>
+        <p>I'm a Political Science and Spanish student at BYU, passionate about international affairs, humanitarian service, and building meaningful connections across cultures. My experience spans legal support, research, writing, education, and community outreach — case files at an immigration law firm, lesson plans for ESL students, feature stories for BYU's College of Life Sciences — and along the way I've built strong skills in communication, organization, and problem-solving.</p>
+        <p>During my humanitarian internship in Asunción, Paraguay, and my service with The Church of Jesus Christ of Latter-day Saints, I worked with diverse communities, taught English and self-reliance classes, coordinated humanitarian initiatives, and strengthened my Spanish through daily immersion. That experience shaped how I show up in a room: I listen first, translate when it's needed — literally and otherwise — and look for the practical next step that moves a project or a person forward.</p>
+        <p>I'm eager to keep growing professionally while contributing to organizations focused on global engagement, community development, and creating lasting, positive impact.</p>
+        <p style="font-style:italic;color:var(--terracotta);">The main way to understand the world is to experience it. Through language, relationships, culture, and service, the world becomes our campus — that's where we begin to understand one another.</p>
+
+        <div class="interests">
+          <div class="interest">🌎 Cross-cultural &amp; humanitarian work</div>
+          <div class="interest">⚖️ Immigration law &amp; advocacy</div>
+          <div class="interest">🎤 Public speaking &amp; competition</div>
+          <div class="interest">📝 Science &amp; feature writing</div>
+        </div>
+      </div>
+
+      <div>
+        <ul class="lang-list">
+          <li><span class="lang-name">English</span><span class="lang-level">Native</span></li>
+          <li><span class="lang-name">Spanish</span><span class="lang-level">Advanced</span></li>
+          <li><span class="lang-name">French</span><span class="lang-level">Basic</span></li>
+          <li><span class="lang-name">ASL</span><span class="lang-level">Basic</span></li>
+        </ul>
+
+        <div class="subhead" style="margin-top:40px;">Areas of Interest</div>
+        <div class="badge-row">
+          <span class="badge">NGOs &amp; International Impact</span>
+          <span class="badge">Global Affairs</span>
+          <span class="badge">International Strategy &amp; Diplomacy</span>
+          <span class="badge">Latin American Studies</span>
+          <span class="badge">Cross-Cultural &amp; Interfaith Collaboration</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Malie Roos © 2026 · All rights reserved</div>
+    <div><a href="#home">↑ Back to top</a></div>
+  </div>
+</footer>
+
+<script>
+  // close mobile nav after link click
+  document.querySelectorAll('.nav-tabs a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.querySelector('.nav-tabs').classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
